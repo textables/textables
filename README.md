@@ -34,8 +34,20 @@
 - Getting to know each other as people.
 - Healthy communication.
 
-TO COVER
--Tickets?
--MVP
--Brainstorm
--Stretch goals
+## Other things
+1. Tickets - post it notes!
+2. Fish Bowl -> Stretch Goals!!!
+
+3. MVP
+  - A bot that you can intereact with
+  - The AI is created using predictive text
+  - Self contained
+  - Twitter
+
+4. Stretch goals
+  - Machine learning
+  - Different personalities.
+  - Switch between personalities.
+  - release bot on unsuspecting slack users!
+
+
