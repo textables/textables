@@ -1,5 +1,8 @@
 # textables
 
+## MVP
+A bot that tweets periodically based on source text using a markov chain
+
 ## Conflict Resolution
 1. What will your group do when it encounters conflict?
 - Use clarifying questions to be sure that the situation is understood
@@ -37,17 +40,5 @@
 ## Other things
 1. Tickets - post it notes!
 2. Fish Bowl -> Stretch Goals!!!
-
-3. MVP
-  - A bot that you can intereact with
-  - The AI is created using predictive text
-  - Self contained
-  - Twitter
-
-4. Stretch goals
-  - Machine learning
-  - Different personalities.
-  - Switch between personalities.
-  - release bot on unsuspecting slack users!
 
 
