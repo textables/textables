@@ -22,8 +22,8 @@ describe('gen text test', () => {
 
   beforeEach(async() => {
     source = await Source.create({
-      firstName: 'Jorl',
-      lastName: 'Der'
+      firstName: 'Lewis',
+      lastName: 'Carrol'
     });
     await Text.create({
       text: testText.text,
