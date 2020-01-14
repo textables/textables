@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const Source = require('./lib/models/Source');
 const Text = require('./lib/models/Text');
 
-const testText = require('./lib/data/crime-and-punishment');
+const testText = require('./lib/data/alice-in-wonderland');
 
 describe('gen text test', () => {
   beforeAll(() => {
@@ -41,6 +41,7 @@ describe('gen text test', () => {
       .then(res => {
         console.log(res);
         expect(res).toEqual(expect.any(String));
+        expect(res.length).toBeLessThan(280);
       });
   });
 });
