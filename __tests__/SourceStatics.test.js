@@ -34,7 +34,7 @@ describe('Source models returnQuoteObject() static can', () => {
   });
 
   it('can return a random sample', async() => {
-    return await Source.returnQuoteObject('Lewis Carroll')
+    return await Source.returnQuoteObject(source.fullName)
       .then(res => {
         console.log(res);
         expect(res).toEqual({
