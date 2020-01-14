@@ -1,5 +1,6 @@
 const Source = require('./lib/models/Source');
 const Markov = require('markov-chains-text').default;
+const createNewSentence = require('./lib/createNewSentence');
 
 //THIS DOC NEEDS TO BE EDITED BEFORE TWITTER
 
@@ -22,7 +23,7 @@ async function generateText(firstName){
     })
     .then(text => {
       const markov = new Markov(text);
-      return markov.makeSentence();
+      return createNewSentence(markov);
     });
 
   //uncomment below for Twitter
