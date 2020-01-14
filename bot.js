@@ -19,11 +19,14 @@ async function generateText(fullName){
       res.texts.forEach(text => {
         textStr += ' ' + text;
       });
-      return textStr;
+      return [textStr, res.fullName];
     })
     .then(text => {
-      const markov = new Markov(text);
-      return createNewSentence(markov);
+      const markov = new Markov(text[0]);
+      return {
+        quote: createNewSentence(markov),
+        source: text[1]
+      };
     });
 
   //uncomment below for Twitter
