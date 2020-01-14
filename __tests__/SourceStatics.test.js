@@ -1,15 +1,13 @@
-const { generateText } = require('./bot');
 require('dotenv').config();
-
-const connect = require('./lib/utils/connect');
+const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 
-const Source = require('./lib/models/Source');
-const Text = require('./lib/models/Text');
+const Source = require('../lib/models/Source');
+const Text = require('../lib/models/Text');
 
-const testText = require('./lib/data/alice-in-wonderland');
+const testText = require('../lib/data/alice-in-wonderland');
 
-describe('gen text test', () => {
+describe('Source models returnQuoteObject() static can', () => {
   beforeAll(() => {
     connect();
   });
@@ -36,7 +34,7 @@ describe('gen text test', () => {
   });
 
   it('can return a random sample', async() => {
-    return await generateText('Lewis Carroll')
+    return await Source.returnQuoteObject('Lewis Carroll')
       .then(res => {
         console.log(res);
         expect(res).toEqual({
