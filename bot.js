@@ -4,13 +4,13 @@ const createNewSentence = require('./lib/createNewSentence');
 
 //THIS DOC NEEDS TO BE EDITED BEFORE TWITTER
 
-async function generateText(firstName){
+async function generateText(fullName){
   
   //eventually delete the return
   return await Source
   //finding by first name will be an issues if we have more that one person with that name
   //we tried finding by full name and that didn't work.
-    .findOne({ firstName: firstName })
+    .findOne({ fullName: fullName })
     .populate('texts')
     .then(res => {
       let textStr = '';
