@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const Source = require('../lib/models/Source');
 const Text = require('../lib/models/Text');
 
-const testText = require('../lib/data/alice-in-wonderland');
+const alice1 = require('../lib/data/alice-in-wonderland');
+const alice2 = require('../lib/data/through-the-looking-glass');
+const testText = `${alice1.text} ${alice2.text}`;
+const randomizer = require('../lib/utils/randomizer');
 
 describe('Source models returnQuoteObject() static can', () => {
   beforeAll(() => {
@@ -16,16 +19,22 @@ describe('Source models returnQuoteObject() static can', () => {
     return mongoose.connection.dropDatabase();
   });
 
-  let source;
+  let sources;
 
-  beforeEach(async() => {
-    source = await Source.create({
+  beforeEach(async () => {
+    sources = await Source.create([{
       fullName: 'Lewis Carroll'
-    });
-    await Text.create({
-      text: testText.text,
-      source: source._id,
-      medium: 'smells'
+    }, {
+      fullName: 'Jane Austin'
+    }, {
+      fullName: 'Edgar Allen Poe'
+    }]);
+    sources.forEach(source => {
+      Text.create({
+        text: testText,
+        source: source._id,
+        medium: 'smells'
+      });
     });
   });
 
@@ -33,10 +42,11 @@ describe('Source models returnQuoteObject() static can', () => {
     return mongoose.connection.close();
   });
 
-  it('can return a random sample', async() => {
-    return await Source.returnQuoteObject(source.fullName)
+  it('can return a random sample', async () => {
+    const fullName = await randomizer();
+    return Source.returnQuoteObject(fullName)
       .then(res => {
-        console.log(res);
+        console.log(res, 'RES!!!')
         expect(res).toEqual({
           quote: res.quote,
           source: res.source
