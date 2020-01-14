@@ -55,7 +55,6 @@ describe('Source models returnQuoteObject() static can', () => {
     const fullName = await randomizer();
     return Source.returnQuoteObject(fullName)
       .then(res => {
-        console.log(res, 'RES!!!')
         expect(res).toEqual({
           quote: res.quote,
           source: res.source
