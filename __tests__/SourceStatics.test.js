@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const Source = require('../lib/models/Source');
 const Text = require('../lib/models/Text');
+const Result = require('../lib/models/Result');
 
 const alice1 = require('../lib/data/alice-in-wonderland');
 const alice2 = require('../lib/data/through-the-looking-glass');
