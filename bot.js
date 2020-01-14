@@ -23,7 +23,8 @@ async function generateText(firstName){
     })
     .then(text => {
       const markov = new Markov(text);
-      return createNewSentence(markov);
+      return `${createNewSentence(markov)} - ${'Source'}`;
+
     });
 
   //uncomment below for Twitter
