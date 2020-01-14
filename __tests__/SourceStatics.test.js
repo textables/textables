@@ -29,12 +29,21 @@ describe('Source models returnQuoteObject() static can', () => {
     }, {
       fullName: 'Edgar Allen Poe'
     }]);
-    sources.forEach(source => {
-      Text.create({
-        text: testText,
-        source: source._id,
-        medium: 'smells'
-      });
+    await Text.create({
+      text: testText,
+      source: sources[0]._id,
+      medium: 'smells'
+    });
+    await Text.create({
+      text: testText,
+      source: sources[1]._id,
+      medium: 'smells'
+    });
+    await Text.create({
+      text: testText,
+      source: sources[2]._id,
+      medium: 'smells'
+
     });
   });
 
