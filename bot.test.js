@@ -22,8 +22,7 @@ describe('gen text test', () => {
 
   beforeEach(async() => {
     source = await Source.create({
-      firstName: 'Lewis',
-      lastName: 'Carrol'
+      fullName: 'Lewis Carroll'
     });
     await Text.create({
       text: testText.text,
@@ -37,7 +36,7 @@ describe('gen text test', () => {
   });
 
   it('can return a random sample', async() => {
-    return await generateText('Lewis')
+    return await generateText('Lewis Carroll')
       .then(res => {
         console.log(res);
         expect(res).toEqual({
