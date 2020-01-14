@@ -57,7 +57,8 @@ describe('Source models returnQuoteObject() static can', () => {
       .then(res => {
         expect(res).toEqual({
           quote: res.quote,
-          source: res.source
+          source: res.source,
+          sourceId: res.sourceId
         });
         expect(res.quote.length).toBeLessThan(280);
       });
