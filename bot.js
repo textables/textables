@@ -1,17 +1,15 @@
+require('dotenv').config();
+require('./lib/utils/connect')();
 const Source = require('./lib/models/Source');
-const Markov = require('markov-chains-text').default;
-const createNewSentence = require('./lib/createNewSentence');
-
-//THIS DOC NEEDS TO BE EDITED BEFORE TWITTER
-
-async function generateText(){
-  
-  const randomSource = 
+require('./lib/models/Text');
+const randomizer = require('./lib/utils/randomizer');
+const twitterPost = require('./lib/utils/twitter-post');
 
 
-  return await Source.returnQuoteObject(randomSource);
+const tweetQuote = async() => {
+  const randomSource = await randomizer();
+  const quoteObject = await Source.returnQuoteObject(randomSource);
+  twitterPost(quoteObject);
+};
 
- 
-}
-
-module.exports = { generateText };
+tweetQuote();
