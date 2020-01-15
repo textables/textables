@@ -1,13 +1,14 @@
 {
   "name": "textables",
   "version": "1.0.0",
-  "description": "",
+  "description": "## MVP A bot that tweets periodically based on source text using a markov chain",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose --runInBand",
-    "test:watch": "npm run test -- --watch",
+    "test": "jest --verbose --runInBand --detectOpenHandles",
+    "test:watch": "npm run test -- --watch --detectOpenHandles",
     "start": "node server.js",
-    "start:watch": "nodemon server.js"
+    "start:watch": "nodemon server.js",
+    "bot": "node bot.js"
   },
   "jest": {
     "testEnvironment": "node"
@@ -22,5 +23,24 @@
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chance": "^1.1.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "genius-lyrics": "^1.0.9",
+    "markov-chains-text": "^1.0.0",
+    "mongoose": "^5.8.7",
+    "twit": "^2.2.11"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/textables/textables.git"
+  },
+  "bugs": {
+    "url": "https://github.com/textables/textables/issues"
+  },
+  "homepage": "https://github.com/textables/textables#readme"
 }
