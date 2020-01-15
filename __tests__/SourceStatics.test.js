@@ -4,14 +4,13 @@ const mongoose = require('mongoose');
 
 const Source = require('../lib/models/Source');
 const Text = require('../lib/models/Text');
-const Result = require('../lib/models/Result');
 
 const alice1 = require('../lib/data/alice-in-wonderland');
 const alice2 = require('../lib/data/through-the-looking-glass');
 const testText = `${alice1.text} ${alice2.text}`;
 const randomizer = require('../lib/utils/randomizer');
 
-describe('Source models returnQuoteObject() static can', () => {
+describe('Source models returnQuoteObject() static', () => {
   beforeAll(() => {
     connect();
   });
@@ -22,7 +21,7 @@ describe('Source models returnQuoteObject() static can', () => {
 
   let sources;
 
-  beforeEach(async () => {
+  beforeEach(async() => {
     sources = await Source.create([{
       fullName: 'Lewis Carroll'
     }, {
@@ -52,7 +51,7 @@ describe('Source models returnQuoteObject() static can', () => {
     return mongoose.connection.close();
   });
 
-  it('can return a random sample', async () => {
+  it('can return a random sample', async() => {
     const fullName = await randomizer();
     return Source.returnQuoteObject(fullName)
       .then(res => {
