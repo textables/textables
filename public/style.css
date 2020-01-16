@@ -89,6 +89,12 @@ input:hover + .radio-image {
     border-radius: 25%;
 }
 
+#question {
+    /* height: 150px;
+    width: 150px; */
+    padding: 25px 30px;
+}
+
 input {
     display: none;
 }
