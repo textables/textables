@@ -1,0 +1,11 @@
+.hidden {
+  display: none
+}
+
+.correct {
+  transform: scale(2);
+}
+
+.wrong {
+  transform: scale(0.75)
+}
