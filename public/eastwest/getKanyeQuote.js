@@ -11,13 +11,11 @@ async function getQuoteFromKanye() {
   };
 
   if(kanye) {
-    console.log(kanye);
     const kQuoteIndex = Math.floor(Math.random() * kanyeWestQuotes.length);
     quote.text = kanyeWestQuotes[kQuoteIndex];
     quote.source = 'West';
     return quote;
   } else if(!kanye) {
-    console.log('Kanye East');
     let quoteObject = await fetch(`/api/v1/results/${kanyeEastID}`, {
       method: 'GET',
       headers: {
