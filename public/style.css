@@ -70,6 +70,15 @@ p {
     background-repeat: no-repeat;
     background-position: center;
     margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.quote-bubble {
+    line-height: 1.2em;
+    width: 400px;
 }
 
 input:checked + .radio-image {
@@ -101,14 +110,6 @@ input:hover + .radio-image {
 }
 
 input {
-    display: none;
-}
-
-.quote-section {
-    margin: 0 auto;
-}
-
-.hidden {
     display: none;
 }
 
