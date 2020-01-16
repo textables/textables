@@ -1,0 +1,51 @@
+
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.devs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap
+}
+
+.each-dev {
+  margin: 15px;
+}
+
+.linkedin, .github {
+  width: 25px;
+  height: 25px;
+}
+
+.linkedin {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px
+}
+
+h2, h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-decoration: underline;
+}
+
+a {
+  padding: 10px;
+}
+
+.description {
+  width: 700px;
+  text-align: center;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  font-size: 20px;
+}
