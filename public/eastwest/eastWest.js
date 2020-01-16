@@ -1,8 +1,7 @@
 import getQuoteFromKanye from './getKanyeQuote.js';
 
 //STRETCH GOALS
-// create leaderboard
-
+// create leaderboard???
 
 let streakCount = 0;
 let quoteObject;
@@ -37,18 +36,17 @@ function makeGuess(kanye) {
     buttonEast.classList.add('correct');
     buttonWest.classList.add('wrong');
   }
-
   if(quoteObject.source === kanye) {
     streakCount++; 
   } else {
     streakCount = 0;
   }
-
   streakDisplay.textContent = streakCount;
   nextQuote.classList.remove('hidden');
 }
 
 async function getNextQuote() {
+  toggle = true;
   attribution.textContent = '____';
   nextQuote.classList.add('hidden');
 
@@ -57,7 +55,6 @@ async function getNextQuote() {
   buttonWest.classList.remove('wrong');
   buttonEast.classList.remove('wrong');
 
-  toggle = true;
 
   await getQuoteFromKanye()
     .then(res => {
@@ -68,14 +65,12 @@ async function getNextQuote() {
 
 buttonWest.addEventListener('click', () => {
   if(toggle) {
-    console.log('button pressed');
     makeGuess('West');
   }
 });
 
 buttonEast.addEventListener('click', () => {
   if(toggle) {
-    console.log('button pressed');
     makeGuess('East');
   }
 });
