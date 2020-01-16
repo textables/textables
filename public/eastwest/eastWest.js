@@ -9,45 +9,72 @@ import getQuoteFromKanye from './getKanyeQuote.js';
 // if wrong knaye is picked reset score
 // create leaderboard
 
+async function onRender() {
+  await getQuoteFromKanye()
+    .then(res => {
+      quoteObject = res;
+      quote.textContent = res.text;
+    });
+}
+
+onRender();
+
 let streakCount = 0;
 let quoteObject;
 
-const westButton = document.getElementById('west');
-const eastButton = document.getElementById('east');
+const buttonWest = document.getElementById('west');
+const buttonEast = document.getElementById('east');
 const quote = document.getElementById('quote');
 const attribution = document.getElementById('attribution');
 const nextQuote = document.getElementById('next-quote');
+const streakDisplay = document.getElementById('streak');
 
 function makeGuess(kanye) {
   attribution.textContent = quoteObject.source;
+
   //change class on correct answer side to make bigger/clear/highlight
-  //diable westButton and eastButton
+  if(quoteObject.source === 'West') {
+    buttonWest.classList.add('correct');
+    buttonEast.classList.add('wrong');
+  }
+  if(quoteObject.source === 'East') {
+    buttonEast.classList.add('correct');
+    buttonWest.classList.add('wrong');
+  }
+  //diable buttonWest and buttonEast
   if(quoteObject.source === kanye) {
     streakCount++; 
   } else {
     streakCount = 0;
   }
-  console.log('streak count:' + streakCount + kanye);
-  //display hidden next quote button
+  streakDisplay.textContent = streakCount;
+  nextQuote.classList.remove('hidden');
   //
 }
 
-async function test() {
+async function getNextQuote() {
+  attribution.textContent = '____';
+  buttonWest.classList.remove('correct');
+  buttonEast.classList.remove('correct');
+  buttonWest.classList.remove('wrong');
+  buttonEast.classList.remove('wrong');
+  nextQuote.classList.add('hidden');
   await getQuoteFromKanye()
-    .then(quoteObject => {
-      console.log(quoteObject);
-      quote.textContent = quoteObject.text;
+    .then(res => {
+      console.log(res);
+      quoteObject = res;
+      quote.textContent = res.text;
     });
 }
 
-westButton.addEventListener('click', () => {
+buttonWest.addEventListener('click', () => {
   makeGuess('West');
 });
 
-eastButton.addEventListener('click', () => {
+buttonEast.addEventListener('click', () => {
   makeGuess('East');
 });
 
 nextQuote.addEventListener('click', () => {
-  test();
+  getNextQuote();
 });
