@@ -7,9 +7,10 @@
 }
 
 body {
-    margin: 1% 20%;
+    /* margin: 1% 20%; */
     text-align: center;
     background-color: beige;
+    /* width: 100vw */
 }
 
 h1 {
@@ -59,12 +60,25 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.bubble {
-    width: 500px;
-    height: 250px;
-    margin-top: 30px;
+.text-bubble {
+    background-size: cover;
+    background: url(./assets/cloud.png);
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.quote-bubble {
+    line-height: 1.2em;
+    width: 400px;
 }
 
 input:checked + .radio-image {
@@ -78,7 +92,7 @@ input:hover + .radio-image {
 }
 
 .radio-image {
-    margin: 0px 20px;
+    margin: 0px 10px;
     width: 200px;
     height: 200px;
     background-position: 50% 50%;
@@ -96,14 +110,6 @@ input:hover + .radio-image {
 }
 
 input {
-    display: none;
-}
-
-.quote-section {
-    margin: 0 auto;
-}
-
-.hidden {
     display: none;
 }
 
