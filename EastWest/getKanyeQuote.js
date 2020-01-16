@@ -2,7 +2,8 @@ import kanyeWestQuotes from './kanye-quotes.js';
 
 const kanyeEastID = '5e1e511c46795e1e5d27356f';
 
-export async function getQuoteFromKanye() {
+async function getQuoteFromKanye() {
+  console.log('ran get quote from kanye');
   const kanye = Math.floor(Math.random() * 2);
 
   let quote = {
@@ -22,10 +23,12 @@ export async function getQuoteFromKanye() {
       }
     })
       .then(res => res.json());
-    console.log(quoteObject);
+      
+    console.log('quote Obj: ' + quoteObject);
     quote.text = quoteObject.tweetText;
     quote.source = 'East';
   }
-
   return quote;
 }
+
+export default getQuoteFromKanye;
