@@ -28,6 +28,8 @@ function makeGuess(kanye) {
   attribution.textContent = quoteObject.source;
 
   toggle = false;
+  buttonWest.classList.remove('normal');
+  buttonEast.classList.remove('normal');
 
   if(quoteObject.source === 'West') {
     buttonWest.classList.add('correct');
@@ -37,7 +39,7 @@ function makeGuess(kanye) {
     buttonWest.classList.add('wrong');
   }
   if(quoteObject.source === kanye) {
-    streakCount++; 
+    streakCount++;
   } else {
     streakCount = 0;
   }
@@ -54,6 +56,8 @@ async function getNextQuote() {
   buttonEast.classList.remove('correct');
   buttonWest.classList.remove('wrong');
   buttonEast.classList.remove('wrong');
+  buttonWest.classList.add('normal');
+  buttonEast.classList.add('normal');
 
 
   await getQuoteFromKanye()
