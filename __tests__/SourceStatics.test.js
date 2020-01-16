@@ -25,9 +25,9 @@ describe('Source models returnQuoteObject() static', () => {
     sources = await Source.create([{
       fullName: 'Lewis Carroll'
     }, {
-      fullName: 'Jane Austin'
+      fullName: 'Jane Austen'
     }, {
-      fullName: 'Edgar Allen Poe'
+      fullName: 'Edgar Allan Poe'
     }]);
     await Text.create({
       text: testText,
