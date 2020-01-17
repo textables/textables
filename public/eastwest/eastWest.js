@@ -15,8 +15,10 @@ const winSound = new Audio('../assets/yeah.wav');
 const loseSound = new Audio('../assets/naahhhhhhh.wav');
 
 async function onRender() {
+  loading(true);
   await getQuoteFromKanye()
     .then(res => {
+      loading(false);
       quoteObject = res;
       quote.textContent = res.text;
     });
@@ -53,6 +55,7 @@ function makeGuess(kanye) {
 }
 
 async function getNextQuote() {
+  loading(true);
   toggle = true;
   attribution.textContent = '____';
   nextQuote.classList.add('hidden');
@@ -70,6 +73,7 @@ async function getNextQuote() {
 
   await getQuoteFromKanye()
     .then(res => {
+      loading(false);
       quoteObject = res;
       quote.textContent = res.text;
     });
@@ -90,3 +94,11 @@ buttonEast.addEventListener('click', () => {
 nextQuote.addEventListener('click', () => {
   getNextQuote();
 });
+
+function loading(state){
+  if(state === true){
+    quote.innerHTML = '<img id="loading" src="../assets/loading.gif"></img>';
+  } else {
+    return;
+  }
+}
