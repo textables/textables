@@ -140,3 +140,24 @@ footer {
         display: block;
     }
 }
+
+@media screen and (max-width: 599px) {
+  h1 {
+    font-size: 15vw;
+  }
+
+  h5 {
+    font-size: 3vw;
+  }
+
+  .navlink {
+    padding: 2vw;
+    font-size: 5vw;
+    margin: 0vw;
+  }
+
+  #loading {
+    width: 36vw;
+    height: auto;
+  }
+}
