@@ -1,26 +1,43 @@
 require('dotenv').config();
 
-const { arrayIncludes } = require('../lib/createNewSentence');
+const { arrayIncludesABadWord } = require('../lib/createNewSentence');
 
 describe('arrayInclude function should', () => {
 
-  it('return false if string includes "bad" word (example 1)', () => {
-    const result = arrayIncludes(['dog'], 'i have a dog named spot');
-    expect(result).toEqual(false);
-  });
-
-  it('return false if array includes "bad" word (example 2)', () => {
-    const result = arrayIncludes(['cat', 'dog'], 'i have a dog named spot');
-    expect(result).toEqual(false);
-  });
-
-  it('return false if array includes "bad" word (example 3)', () => {
-    const result = arrayIncludes(['dog', 'cat'], 'i have a dog named spot');
-    expect(result).toEqual(false);
-  });
-
-  it('return true if array does not include "bad" word', () => {
-    const result = arrayIncludes(['cat'], 'i have a dog named spot');
+  it('return true if string includes "bad" word (example 1)', () => {
+    const result = arrayIncludesABadWord(['dog'], 'i have a dog named spot');
     expect(result).toEqual(true);
+  });
+
+  it('return true if array includes "bad" word (example 2)', () => {
+    const result = arrayIncludesABadWord(['cat', 'dog'], 'i have a dog named spot');
+    expect(result).toEqual(true);
+  });
+
+  it('return true if array includes "bad" word (example 3)', () => {
+    const result = arrayIncludesABadWord(['dog', 'cat'], 'i have a dog named spot');
+    expect(result).toEqual(true);
+  });
+
+  it('return false if array does not include "bad" word', () => {
+    const result = arrayIncludesABadWord(['cat'], 'i have a dog named spot');
+    expect(result).toEqual(false);
+  });
+
+  it('returns true if array includes part of a "bad" word', () =>{
+    const result = arrayIncludesABadWord(['ca'], 'I have a accat named garfield');
+    expect(result).toEqual(true);
+  });
+
+  it('checks our createNewSentence function', () => {
+    function createNewSentence() {
+      let generatedSentence = 'I have a dog';
+      while(generatedSentence.length > 260 || arrayIncludesABadWord(['dog', 'cat'], generatedSentence)) {
+        generatedSentence = 'I have a lizard';
+      }
+      return generatedSentence;
+    }
+
+    expect(createNewSentence()).toEqual('I have a lizard');
   });
 });

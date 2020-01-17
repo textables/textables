@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Markov Twain</title>
+</head>
+
+<body>
+    <header>
+        <h1>Markov Twain</h1>
+        <h5>"Some things that some famous people definitely said."</h5>
+        <nav>
+
+            <a class="navlink" href="./">Home</a>
+            <a class="navlink" href="./eastwest/index.html">East vs. West</a>
+            <a class="navlink" href="https://twitter.com/markovtwainbot" target="_blank">Twitter Bot</a>
+            <a class="navlink" href="./about.html">About</a>
+
+        </nav>
+    </header>
+    <section class="text-bubble">
+        <p class="quote-bubble">
+
+        </p>
+    </section>
+
+        <div class="selection-area">
+        
+            <div class="source-images">
+                <label class="dostoyevsky">
+                    <input name="source" type="radio" value="5e1e4ec52d2b701b5aaf0227" />
+                    <img class="radio-image" src="assets/dostoyevsky.png">
+                    <p>Fyodor Dostoevsky</p>
+                    </input>
+                </label>
+                <label class="austen">
+                    <input name="source" type="radio" value="5e1e4ec52d2b701b5aaf0226" />
+                    <img class="radio-image" src="assets/austen.png">
+                    <p>Jane Austen</p>
+                    </input>
+                </label>
+                <label class="carroll">
+                    <input name="source" type="radio" value="5e1e4ec52d2b701b5aaf0229" />
+                    <img class="radio-image" src="assets/carroll.png">
+                    <p>Lewis Carroll</p>
+                    </input>
+                </label>
+                <label class="poe">
+                    <input name="source" type="radio" value="5e1e4ec52d2b701b5aaf0228" />
+                    <img class="radio-image" src="assets/poe.png">
+                    <p>Edgar Allan Poe</p>
+                    </input>
+                </label>
+                <label class="east">
+                    <input name="source" type="radio" value="5e1e511c46795e1e5d27356f" />
+                    <img class="radio-image" src="assets/east.png">
+                    <p>Kanye East</p>
+                    </input>
+                </label>
+                <label class="twain">
+                    <input name="source" type="radio" value="5e1e4ec52d2b701b5aaf022a" />
+                    <img class="radio-image" src="assets/twain.png">
+                    <p>Mark Twain</p>
+                    </input>
+                </label>
+                <label class="surprise-me">
+                    <input name="source" type="radio" value="surprise-me" />
+                    <img id="question" class="radio-image" src="assets//question-mark.png">
+                    </input>
+                    <p>Surprise Me!</p>
+                </label>
+            </div>
+        </div>
+
+    <footer>&copy;2020 ・ Alchemy Code Lab</footer>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
