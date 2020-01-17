@@ -1,8 +1,5 @@
 import getQuoteFromKanye from './getKanyeQuote.js';
 
-//STRETCH GOALS
-// create leaderboard???
-
 let streakCount = 0;
 let quoteObject;
 let toggle = true;
