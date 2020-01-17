@@ -24,7 +24,7 @@ async function getQuoteFromKanye() {
     })
       .then(res => res.json())
       .then(quoteObject => {
-        quote.text = `"${quoteObject.tweetText}`;
+        quote.text = `"${quoteObject.tweetText}"`;
         quote.source = 'East';
         return quote;
       });
