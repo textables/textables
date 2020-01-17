@@ -29,7 +29,7 @@ h5 {
     padding: 0;
 }
 
-a {
+.navlink {
     font-family: 'Roboto Condensed', sans-serif;
     text-decoration: none;
     padding: 30px;
@@ -37,7 +37,7 @@ a {
     font-weight: bold;
 }
 
-a:hover {
+.navlink:hover {
     color: grey;
 }
 
