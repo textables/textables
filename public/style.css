@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -80,6 +84,11 @@ p {
     width: 400px;
 }
 
+#loading{
+    width: 200px;
+    height: 200px;
+}
+
 input:checked + .radio-image {
     border: 1px dashed black;
     padding: 1px;
@@ -115,4 +124,19 @@ footer {
     font-weight: lighter;
     margin-top: 2%;
     font-size: 12px;
+}
+
+.back-to-top {
+    width: 30px;
+    height: 30px; 
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .back-to-top {
+        position: fixed;
+        bottom: 10px;
+        left: 5%;
+        display: block;
+    }
 }
