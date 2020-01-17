@@ -54,7 +54,7 @@ function makeGuess(kanye) {
 
 async function getNextQuote() {
   toggle = true;
-  attribution.textContent = '____';
+  attribution.textContent = '????';
   nextQuote.classList.add('hidden');
 
   streakDisplay.classList.remove('reset-points');
