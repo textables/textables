@@ -33,9 +33,10 @@ h5 {
 .navlink {
     font-family: 'Roboto Condensed', sans-serif;
     text-decoration: none;
-    padding: 30px;
+    margin: 30px;
     color: black; 
     font-weight: bold;
+    padding: 0;
 }
 
 .navlink:hover {
