@@ -19,4 +19,3 @@ export async function fetchRandom() {
     .then(res => res.json());
   return data;
 }
-
