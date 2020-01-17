@@ -67,7 +67,6 @@ async function getNextQuote() {
   buttonWest.classList.add('normal');
   buttonEast.classList.add('normal');
 
-
   await getQuoteFromKanye()
     .then(res => {
       quoteObject = res;

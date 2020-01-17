@@ -23,6 +23,11 @@
   border: solid 1px black;
 }
 
+#loading{
+  width: 150px;
+  height: 150px;
+}
+
 #attribution {
   font-weight: bold;
   text-decoration: underline;
