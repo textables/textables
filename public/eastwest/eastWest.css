@@ -23,6 +23,11 @@
   border: solid 1px black;
 }
 
+#attribution {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 600px) {  
   .correct {
     transform: scale(1.25);
@@ -133,14 +138,14 @@
 
   #west {
     position: absolute;
-    bottom: -3vw;
-    left: -33vw
+    bottom: 0vw;
+    left: 0vw
   }
 
   #east {
     position: absolute;
-    bottom: -3vw;
-    right: -33vw
+    bottom: 0vw;
+    right: 0vw
   }
 
   #east img {
@@ -148,42 +153,45 @@
   }
 
   img {
-    width: 85vw;
+    width: 50vw;
   }
 
   #west .name {
     position: absolute;
-    left: 34vw;
-    bottom: 74vw;
+    left: 4vw;
+    bottom: 42vw;
     font-size: 6vw;
   }
 
   #east .name {
     position: absolute;
-    right: 34vw;
-    bottom: 74vw;
+    right: 4vw;
+    bottom: 42vw;
     font-size: 6vw;
   }
 
   #quote-box {
-    margin-top: 20px;
+    margin-top: 30px;
+    position: relative;
+  }
+
+  #quote-border {
+    height: 67vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   #quote {
-    font-size: 5vw;
+    font-size: 3vh;
   }
 
   #full-attrib {
     font-size: 4vw;
   }
 
-  #score-box {
-    position: absolute;
-    bottom: 48vw;
-    left: 29vw;
-  }
-
   #score {
+    margin: 5px;
     font-size: 5vw;
   }
 
