@@ -20,6 +20,19 @@
   transition-timing-function: ease;
 }
 
+.add-point {
+  color:green;
+}
+
+.reset-points {
+  color: red;
+}
+
+.normal-points {
+  color: black;
+  transition: 2s;
+}
+
 #main {
   display: flex;
   justify-content: center;
