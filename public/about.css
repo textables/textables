@@ -33,6 +33,12 @@ a {
   padding: 10px;
 }
 
+.twitterlink {
+  text-decoration: none;
+  color: black; 
+  font-weight: bold;
+}
+
 .description {
   width: 700px;
   text-align: center;
