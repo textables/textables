@@ -12,7 +12,7 @@ async function getQuoteFromKanye() {
 
   if(kanye) {
     const kQuoteIndex = Math.floor(Math.random() * kanyeWestQuotes.length);
-    quote.text = kanyeWestQuotes[kQuoteIndex];
+    quote.text = `"${kanyeWestQuotes[kQuoteIndex]}"`;
     quote.source = 'West';
     return quote;
   } else if(!kanye) {
@@ -24,7 +24,7 @@ async function getQuoteFromKanye() {
     })
       .then(res => res.json())
       .then(quoteObject => {
-        quote.text = quoteObject.tweetText;
+        quote.text = `"${quoteObject.tweetText}`;
         quote.source = 'East';
         return quote;
       });
