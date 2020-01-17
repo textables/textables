@@ -14,6 +14,9 @@ const attribution = document.getElementById('attribution');
 const nextQuote = document.getElementById('next-quote');
 const streakDisplay = document.getElementById('streak');
 
+const winSound = new Audio('../assets/yeah.wav');
+const loseSound = new Audio('../assets/naahhhhhhh.wav');
+
 async function onRender() {
   await getQuoteFromKanye()
     .then(res => {
@@ -30,6 +33,7 @@ function makeGuess(kanye) {
   toggle = false;
   buttonWest.classList.remove('normal');
   buttonEast.classList.remove('normal');
+  streakDisplay.classList.remove('normal-points');
 
   if(quoteObject.source === 'West') {
     buttonWest.classList.add('correct');
@@ -39,9 +43,13 @@ function makeGuess(kanye) {
     buttonWest.classList.add('wrong');
   }
   if(quoteObject.source === kanye) {
+    winSound.play();
     streakCount++;
+    streakDisplay.classList.add('add-point');
   } else {
+    loseSound.play();
     streakCount = 0;
+    streakDisplay.classList.add('reset-points');
   }
   streakDisplay.textContent = streakCount;
   nextQuote.classList.remove('hidden');
@@ -52,6 +60,9 @@ async function getNextQuote() {
   attribution.textContent = '____';
   nextQuote.classList.add('hidden');
 
+  streakDisplay.classList.remove('reset-points');
+  streakDisplay.classList.remove('add-point');
+  streakDisplay.classList.add('normal-points');
   buttonWest.classList.remove('correct');
   buttonEast.classList.remove('correct');
   buttonWest.classList.remove('wrong');
