@@ -24,7 +24,7 @@ async function onRender() {
 
 onRender();
 
-function makeGuess(kanye) {
+function makeGuess(kanyeGuessed) {
   attribution.textContent = quoteObject.source;
 
   toggle = false;
@@ -39,12 +39,15 @@ function makeGuess(kanye) {
     buttonEast.classList.add('correct');
     buttonWest.classList.add('wrong');
   }
-  if(quoteObject.source === kanye) {
+  if(quoteObject.source === kanyeGuessed) {
     winSound.play();
     streakCount++;
     streakDisplay.classList.add('add-point');
   } else {
     loseSound.play();
+    
+    //if(checkForHighScore(streakCount)) addHighScore(streakCount)
+
     streakCount = 0;
     streakDisplay.classList.add('reset-points');
   }
