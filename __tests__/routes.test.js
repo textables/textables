@@ -17,12 +17,14 @@ describe('route tests', () => {
     return mongoose.connection.dropDatabase();
   });
 
+  let lowscore;
+
   beforeEach(async() => {
     await HighScore.create({
       name: 'North',
       score: 5
     });
-    await HighScore.create({
+    lowscore = await HighScore.create({
       name: 'Other',
       score: 1
     });
@@ -37,13 +39,13 @@ describe('route tests', () => {
     return mongoose.connection.close();
   });
 
-  it.skip('can send a quote to the cron job controller and return complete', () => {
-    return request(app)
-      .post('/api/v1/cron')
-      .then(res => {
-        expect(res.text).toEqual('complete');
-      });
-  });
+  // it.skip('can send a quote to the cron job controller and return complete', () => {
+  //   return request(app)
+  //     .post('/api/v1/cron')
+  //     .then(res => {
+  //       expect(res.text).toEqual('complete');
+  //     });
+  // });
 
   it('can add a new highscore', () => {
     return request(app)
@@ -104,9 +106,9 @@ describe('route tests', () => {
         }));
   });
 
-  it.skip('can delete lowest highscore', () => {
+  it('can delete a highscore', () => {
     return request(app)
-      .del('/api/v1/highscore')
+      .del(`/api/v1/highscores/${lowscore._id}`)
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
