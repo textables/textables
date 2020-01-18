@@ -91,4 +91,18 @@ describe('route tests', () => {
       });
   });
 
+  it('can delete lowest highscore', () => {
+    return request(app)
+      .del('/api/v1/highscore')
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          name: 'Other',
+          score: 1,
+          timestamp: expect.any(String),
+          __v: 0
+        });
+      });
+  });
+
 });
