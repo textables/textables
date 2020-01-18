@@ -120,4 +120,18 @@ describe('route tests', () => {
       });
   });
 
+  it('can find and delete the lowest highscore', () => {
+    return request(app)
+      .del('/api/v1/highscores/lowest/delete')
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          name: 'Other',
+          score: 1,
+          timestamp: expect.any(String),
+          __v: 0
+        });
+      });
+  });
+
 });
