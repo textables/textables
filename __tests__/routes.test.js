@@ -91,7 +91,20 @@ describe('route tests', () => {
       });
   });
 
-  it('can delete lowest highscore', () => {
+  it('can get the lowest scoring highscore', () => {
+    return request(app)
+      .get('/api/v1/highscores/lowest')
+      .then(res => 
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          name: 'Other',
+          score: 1,
+          timestamp: expect.any(String),
+          __v: 0
+        }));
+  });
+
+  it.skip('can delete lowest highscore', () => {
     return request(app)
       .del('/api/v1/highscore')
       .then(res => {
