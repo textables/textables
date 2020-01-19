@@ -111,7 +111,7 @@ form {
     font-size: 15px;
   }
 
-  .full-attrib {
+  #full-attrib {
     align-self: flex-end;
     margin-right: 15px
   }

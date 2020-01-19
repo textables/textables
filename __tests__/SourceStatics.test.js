@@ -10,7 +10,7 @@ const alice2 = require('../lib/data/through-the-looking-glass');
 const testText = `${alice1.text} ${alice2.text}`;
 const randomizer = require('../lib/utils/randomizer');
 
-describe.skip('Source models returnQuoteObject() static', () => {
+describe('Source models returnQuoteObject() static', () => {
   beforeAll(() => {
     connect();
   });

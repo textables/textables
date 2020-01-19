@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { arrayIncludesABadWord } = require('../lib/createNewSentence');
 
-describe.skip('arrayInclude function should', () => {
+describe('arrayInclude function should', () => {
 
   it('return true if string includes "bad" word (example 1)', () => {
     const result = arrayIncludesABadWord(['dog'], 'i have a dog named spot');

@@ -36,8 +36,7 @@ describe('route tests', () => {
     return mongoose.connection.close();
   });
 
-  // it('can send a quote to the cron job controller and return complete', async() => {
-  //   await Source.create({ fullName: 'Full Name' });
+  // it('can send a quote to the cron job controller and return complete', () => {
   //   return request(app)
   //     .post('/api/v1/cron')
   //     .then(res => {
