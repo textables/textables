@@ -15,9 +15,9 @@ describe.skip('Source models returnQuoteObject() static', () => {
     connect();
   });
 
-  // beforeEach(() => {
-  //   return mongoose.connection.dropDatabase();
-  // });
+  beforeEach(() => {
+    return mongoose.connection.dropDatabase();
+  });
 
   let sources;
 

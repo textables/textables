@@ -4,6 +4,7 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const HighScore = require('../lib/models/HighScore');
+const Source = require('../lib/models/Source');
 
 describe('route tests', () => {
 
@@ -25,7 +26,7 @@ describe('route tests', () => {
       score: 5
     });
     lowscore = await HighScore.create({
-      name: 'Other',
+      name: 'South',
       score: 1
     });
 
@@ -35,13 +36,14 @@ describe('route tests', () => {
     return mongoose.connection.close();
   });
 
-  it('can send a quote to the cron job controller and return complete', () => {
-    return request(app)
-      .post('/api/v1/cron')
-      .then(res => {
-        expect(res.text).toEqual('complete');
-      });
-  });
+  // it('can send a quote to the cron job controller and return complete', async() => {
+  //   await Source.create({ fullName: 'Full Name' });
+  //   return request(app)
+  //     .post('/api/v1/cron')
+  //     .then(res => {
+  //       expect(res.text).toEqual('complete');
+  //     });
+  // });
 
   it('can add a new highscore', () => {
     return request(app)
@@ -74,15 +76,8 @@ describe('route tests', () => {
         },
         {
           _id: expect.any(String),
-          name: 'Other',
-          score: 1,
-          timestamp: expect.any(String),
-          __v: 0
-        },
-        {
-          _id: expect.any(String),
           name: 'South',
-          score: 10,
+          score: 1,
           timestamp: expect.any(String),
           __v: 0
         }]);
@@ -95,7 +90,7 @@ describe('route tests', () => {
       .then(res => 
         expect(res.body).toEqual({
           _id: expect.any(String),
-          name: 'Other',
+          name: 'South',
           score: 1,
           timestamp: expect.any(String),
           __v: 0
@@ -108,7 +103,7 @@ describe('route tests', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          name: 'Other',
+          name: 'South',
           score: 1,
           timestamp: expect.any(String),
           __v: 0
@@ -122,7 +117,7 @@ describe('route tests', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          name: 'Other',
+          name: 'South',
           score: 1,
           timestamp: expect.any(String),
           __v: 0
