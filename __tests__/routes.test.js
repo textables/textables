@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
-const HighScore = require('../lib/models/HighScore')
+const HighScore = require('../lib/models/HighScore');
 
 describe('route tests', () => {
 
@@ -31,6 +31,34 @@ describe('route tests', () => {
     await HighScore.create({
       name: 'South',
       score: 10
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 2
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 3
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 4
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 6
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 7
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 8
+    });
+    await HighScore.create({
+      name: 'North',
+      score: 9
     });
 
   });

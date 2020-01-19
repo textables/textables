@@ -16,7 +16,6 @@ const nextQuote = document.getElementById('next-quote');
 const streakDisplay = document.getElementById('streak');
 const fullAttribution = document.getElementById('full-attrib');
 const highScoreForm = document.getElementById('highscore-form');
-const submit = document.getElementById('submit-score');
 
 const winSound = new Audio('../assets/yeah.wav');
 const loseSound = new Audio('../assets/naahhhhhhh.wav');
@@ -31,7 +30,7 @@ async function onRender() {
 
 onRender();
 
-function makeGuess(kanyeGuessed) {
+async function makeGuess(kanyeGuessed) {
   attribution.textContent = quoteObject.source;
 
   toggle = false;
@@ -53,12 +52,9 @@ function makeGuess(kanyeGuessed) {
   } else {
     loseSound.play();
 
-    if(checkForHighScore(streakCount)) {
+    if(await checkForHighScore(streakCount)) {
       displayNewHSForm();
-      deleteLowestScore();
     }
-    streakCount = 0;
-    streakDisplay.classList.add('reset-points');
   }
   streakDisplay.textContent = streakCount;
   nextQuote.classList.remove('hidden');
@@ -111,10 +107,27 @@ nextQuote.addEventListener('click', () => {
   getNextQuote();
 });
 
-submit.addEventListener('submit', event => {
+highScoreForm.addEventListener('submit', event => {
   event.preventDefault();
 
   const formData = new FormData(event.target);
-  const name = formData.get('name');
-  addHighScore(name, streakCount);
+
+  const highscoreObj = {
+    name: formData.get('name'),
+    score: streakCount
+  };
+  
+  fetch('/api/v1/highscores', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify(highscoreObj)
+  })
+    .then(res => {
+      console.log(`created: ${res}`);
+    });
+
+    // addHighScore(name, streakCount),
+    // deleteLowestScore()
 });

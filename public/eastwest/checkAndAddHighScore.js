@@ -1,13 +1,11 @@
 export async function checkForHighScore(newScore) {
-  console.log(`Ran: checkForHighScore with a score of ${newScore}`);
-
   return await fetch('/api/v1/highscores/lowest', {
     method: 'GET',
     header: { 'Content-Type': 'application/json' }
   })
     .then(res => res.json())
     .then(lowestHighScore => {
-      console.log(`lowestHighScore is: ${lowestHighScore}`);
+      console.log(`lowestHighScore is: ${lowestHighScore.score}`);
       let isNewScoreHigher = false;
       if(newScore > lowestHighScore.score) isNewScoreHigher = true;
       return isNewScoreHigher;
@@ -19,17 +17,24 @@ export async function deleteLowestScore() {
     method: 'DELETE',
     header: { 'Content-Type': 'application/json' }
   })
-    .then(res => console.log(`deleted: ${res.json()}`));
+    .then(res => console.log(`deleted: ${res}`));
 }
 
-export async function addHighScore(name, score) {
-  await fetch('/api/v1/highscore', {
+export function addHighScore(name, score) {
+  const highscoreObj = {
+    name: name,
+    score: score
+  };
+
+  fetch('/api/v1/highscores', {
     method: 'POST',
-    header: { 'Content-Type': 'application/json' },
-    body: {
-      name: name,
-      socre: score
-    }
+    headers: { 
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify(highscoreObj)
   })
-    .then(res => console.log(`created: ${res.json()}`));
+    .then(res => {
+      console.log(`created: ${res.json()}`);
+      return res.json();
+    });
 }
