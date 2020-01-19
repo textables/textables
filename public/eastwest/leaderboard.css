@@ -1,0 +1,7 @@
+#table {
+  display: inline-grid;
+  width: 250px;
+  margin-top: 15px;
+  text-align: left;
+    font-size: 20px;
+}

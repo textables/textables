@@ -28,38 +28,6 @@ describe('route tests', () => {
       name: 'Other',
       score: 1
     });
-    await HighScore.create({
-      name: 'South',
-      score: 10
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 2
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 3
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 4
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 6
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 7
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 8
-    });
-    await HighScore.create({
-      name: 'North',
-      score: 9
-    });
 
   });
 
@@ -67,13 +35,13 @@ describe('route tests', () => {
     return mongoose.connection.close();
   });
 
-  // it.skip('can send a quote to the cron job controller and return complete', () => {
-  //   return request(app)
-  //     .post('/api/v1/cron')
-  //     .then(res => {
-  //       expect(res.text).toEqual('complete');
-  //     });
-  // });
+  it('can send a quote to the cron job controller and return complete', () => {
+    return request(app)
+      .post('/api/v1/cron')
+      .then(res => {
+        expect(res.text).toEqual('complete');
+      });
+  });
 
   it('can add a new highscore', () => {
     return request(app)

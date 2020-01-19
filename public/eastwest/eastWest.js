@@ -148,3 +148,7 @@ highScoreForm.addEventListener('submit', event => {
       promptPlayerForNextQuote();
     });
 });
+
+toHighScores.addEventListener('click', () => {
+  window.location.href = './leaderboard.html';
+});
