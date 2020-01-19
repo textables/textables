@@ -12,7 +12,7 @@
 
 .normal-points {
   color: black;
-  transition: 2s;
+  transition: 3s;
 }
 
 #west:hover, #east:hover, button {
@@ -20,6 +20,7 @@
 }
 
 #quote-border {
+  border-radius: 5px;
   border: solid 1px black;
 }
 
@@ -59,6 +60,10 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  #game-over {
+    font-size: 45px;
   }
 
   #west {
@@ -117,6 +122,13 @@ form {
 
   button {
     font-family: 'Roboto Condensed', sans-serif;
+    background-color: black;
+    color: beige;
+    width: 100px;
+    align-self: center;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
   }
 
   #score {
@@ -126,7 +138,7 @@ form {
 
   #player-name {
     background-color: beige;
-    width: 4vw;
+    width: 6vw;
     display: unset;
     border: none;
   }
@@ -150,6 +162,10 @@ form {
   .navlink {
     padding: 2vw;
     font-size: 5vw;
+  }
+
+  #game-over {
+    font-size: 10vw;
   }
 
   #west {
@@ -214,21 +230,22 @@ form {
 
   button {
     font-size: 4vw;
-  }
-
-  #next-quote {
     background-color: black;
     color: beige;
     align-self: center;
     border-radius: 10px;
     padding: 5px;
-    z-index: 10;
   }
+
 
   #player-name {
     background-color: beige;
-    width: 10vw;
+    width: 16vw;
     display: unset;
     border: none;
+  }
+
+  .submit-success {
+    margin-top: 4vh;
   }
 }

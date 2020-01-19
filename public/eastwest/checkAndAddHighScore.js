@@ -11,30 +11,3 @@ export async function checkForHighScore(newScore) {
       return isNewScoreHigher;
     });
 }
-
-export async function deleteLowestScore() {
-  await fetch('/api/v1/highscores/lowest/delete', {
-    method: 'DELETE',
-    header: { 'Content-Type': 'application/json' }
-  })
-    .then(res => console.log(`deleted: ${res}`));
-}
-
-export function addHighScore(name, score) {
-  const highscoreObj = {
-    name: name,
-    score: score
-  };
-
-  fetch('/api/v1/highscores', {
-    method: 'POST',
-    headers: { 
-      'Content-Type': 'application/json' 
-    },
-    body: JSON.stringify(highscoreObj)
-  })
-    .then(res => {
-      console.log(`created: ${res.json()}`);
-      return res.json();
-    });
-}
