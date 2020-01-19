@@ -33,6 +33,10 @@
   text-decoration: underline;
 }
 
+form {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 @media screen and (min-width: 600px) {  
   .correct {
     transform: scale(1.25);
@@ -102,7 +106,7 @@
     font-size: 15px;
   }
 
-  #full-attrib {
+  .full-attrib {
     align-self: flex-end;
     margin-right: 15px
   }
@@ -118,6 +122,13 @@
   #score {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bolder;
+  }
+
+  #player-name {
+    background-color: beige;
+    width: 4vw;
+    display: unset;
+    border: none;
   }
 }
 
@@ -212,5 +223,12 @@
     border-radius: 10px;
     padding: 5px;
     z-index: 10;
+  }
+
+  #player-name {
+    background-color: beige;
+    width: 10vw;
+    display: unset;
+    border: none;
   }
 }

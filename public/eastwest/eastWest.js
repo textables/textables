@@ -1,4 +1,8 @@
 import getQuoteFromKanye from './getKanyeQuote.js';
+import { 
+  checkForHighScore, 
+  deleteLowestScore, 
+  addHighScore } from './checkAndAddHighScore.js';
 
 let streakCount = 0;
 let quoteObject;
@@ -10,6 +14,9 @@ const quote = document.getElementById('quote');
 const attribution = document.getElementById('attribution');
 const nextQuote = document.getElementById('next-quote');
 const streakDisplay = document.getElementById('streak');
+const fullAttribution = document.getElementById('full-attrib');
+const highScoreForm = document.getElementById('highscore-form');
+const submit = document.getElementById('submit-score');
 
 const winSound = new Audio('../assets/yeah.wav');
 const loseSound = new Audio('../assets/naahhhhhhh.wav');
@@ -45,14 +52,25 @@ function makeGuess(kanyeGuessed) {
     streakDisplay.classList.add('add-point');
   } else {
     loseSound.play();
-    
-    //if(checkForHighScore(streakCount)) addHighScore(streakCount)
 
+    if(checkForHighScore(streakCount)) {
+      displayNewHSForm();
+      deleteLowestScore();
+    }
     streakCount = 0;
     streakDisplay.classList.add('reset-points');
   }
   streakDisplay.textContent = streakCount;
   nextQuote.classList.remove('hidden');
+}
+
+function displayNewHSForm() {
+  quote.textContent = `GAME OVER
+  New Highscore!
+  Enter Name:`;
+
+  fullAttribution.classList.add('hidden');
+  highScoreForm.classList.remove('hidden');
 }
 
 async function getNextQuote() {
@@ -91,4 +109,12 @@ buttonEast.addEventListener('click', () => {
 
 nextQuote.addEventListener('click', () => {
   getNextQuote();
+});
+
+submit.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const name = formData.get('name');
+  addHighScore(name, streakCount);
 });
