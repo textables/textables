@@ -140,7 +140,7 @@ highScoreForm.addEventListener('submit', event => {
       highScoreForm.classList.add('hidden');
       submitSuccess.classList.remove('hidden');
       toHighScores.classList.remove('hidden');
-      if(res) fetch('/api/v1/highscores/lowest/delete', {
+      if(res.name) fetch('/api/v1/highscores/lowest/delete', {
         method: 'DELETE',
         header: { 'Content-Type': 'application/json' }
       });
