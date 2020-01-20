@@ -4,9 +4,8 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const HighScore = require('../lib/models/HighScore');
-const Source = require('../lib/models/Source');
 
-describe('route tests', () => {
+describe.skip('route tests', () => {
 
 
   beforeAll(() => {
@@ -36,13 +35,13 @@ describe('route tests', () => {
     return mongoose.connection.close();
   });
 
-  // it('can send a quote to the cron job controller and return complete', () => {
-  //   return request(app)
-  //     .post('/api/v1/cron')
-  //     .then(res => {
-  //       expect(res.text).toEqual('complete');
-  //     });
-  // });
+  it('can send a quote to the cron job controller and return complete', () => {
+    return request(app)
+      .post('/api/v1/cron')
+      .then(res => {
+        expect(res.text).toEqual('complete');
+      });
+  });
 
   it('can add a new highscore', () => {
     return request(app)
