@@ -5,7 +5,6 @@ export async function checkForHighScore(newScore) {
   })
     .then(res => res.json())
     .then(lowestHighScore => {
-      console.log(`lowestHighScore is: ${lowestHighScore.score}`);
       let isNewScoreHigher = false;
       if(newScore > lowestHighScore.score) isNewScoreHigher = true;
       return isNewScoreHigher;
