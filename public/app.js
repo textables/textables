@@ -8,10 +8,6 @@ async function onLoad() {
 
   if(selectedSource){
     loading(true);
-    const queryString = window.location.hash.slice(1);
-    const searchParams = new URLSearchParams(queryString);
-    searchParams.set('sourceId', selectedSource);
-    window.location.hash = searchParams.toString();
     const data = await fetchWithSource(selectedSource);
     loading(false);
     quoteTextArea.innerHTML = `"${data.tweetText}" <br><br>- ${data.source.fullName}`;
@@ -37,12 +33,7 @@ listOfRadioButtons.forEach(buttonValue => {
       quoteTextArea.innerHTML = `"${data.tweetText}" <br><br>- ${data.source.fullName}`;
     } else {
       loading(true);
-      const queryString = window.location.hash.slice(1);
-      const searchParams = new URLSearchParams(queryString);
-      searchParams.set('sourceId', chosenSource);
       localStorage.setItem('source', chosenSource);
-      window.location.hash = searchParams.toString();
-
       const data = await fetchWithSource(chosenSource);
       loading(false);
       quoteTextArea.innerHTML = `"${data.tweetText}" <br><br>- ${data.source.fullName}`;
