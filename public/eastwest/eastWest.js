@@ -139,12 +139,12 @@ highScoreForm.addEventListener('submit', event => {
     .then(res => res.json())
     .then(res => {
       highScoreForm.classList.add('hidden');
-      submitSuccess.classList.remove('hidden');
-      toHighScores.classList.remove('hidden');
       if(res.name) fetch('/api/v1/highscores/lowest/delete', {
         method: 'DELETE',
         header: { 'Content-Type': 'application/json' }
       });
+      submitSuccess.classList.remove('hidden');
+      toHighScores.classList.remove('hidden');
       streakCount = 0;
       promptPlayerForNextQuote();
     });
