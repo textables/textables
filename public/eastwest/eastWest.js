@@ -136,6 +136,7 @@ highScoreForm.addEventListener('submit', event => {
     },
     body: JSON.stringify(highscoreObj)
   })
+    .then(res => res.json())
     .then(res => {
       highScoreForm.classList.add('hidden');
       submitSuccess.classList.remove('hidden');
