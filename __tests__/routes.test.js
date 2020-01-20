@@ -5,7 +5,7 @@ const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const HighScore = require('../lib/models/HighScore');
 
-describe.skip('route tests', () => {
+describe('route tests', () => {
 
 
   beforeAll(() => {
