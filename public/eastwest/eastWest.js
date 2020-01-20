@@ -1,4 +1,5 @@
 import getQuoteFromKanye from './getKanyeQuote.js';
+import { checkForHighScore } from './checkAndAddHighScore.js';
 
 let streakCount = 0;
 let quoteObject;
@@ -10,6 +11,11 @@ const quote = document.getElementById('quote');
 const attribution = document.getElementById('attribution');
 const nextQuote = document.getElementById('next-quote');
 const streakDisplay = document.getElementById('streak');
+const fullAttribution = document.getElementById('full-attrib');
+const highScoreForm = document.getElementById('highscore-form');
+const submitSuccess = document.getElementById('submit-success');
+const toHighScores = document.getElementById('to-highscores');
+const gameOver = document.getElementById('game-over');
 
 const winSound = new Audio('../assets/yeah.wav');
 const loseSound = new Audio('../assets/naahhhhhhh.wav');
@@ -24,10 +30,10 @@ async function onRender() {
 
 onRender();
 
-function makeGuess(kanye) {
+async function makeGuess(kanyeGuessed) {
   attribution.textContent = quoteObject.source;
-
   toggle = false;
+
   buttonWest.classList.remove('normal');
   buttonEast.classList.remove('normal');
   streakDisplay.classList.remove('normal-points');
@@ -39,23 +45,46 @@ function makeGuess(kanye) {
     buttonEast.classList.add('correct');
     buttonWest.classList.add('wrong');
   }
-  if(quoteObject.source === kanye) {
-    winSound.play();
+
+  if(quoteObject.source === kanyeGuessed) {
+    winSound.play(); 
     streakCount++;
     streakDisplay.classList.add('add-point');
+    promptPlayerForNextQuote();
   } else {
     loseSound.play();
-    streakCount = 0;
+    gameOver.classList.remove('hidden');
     streakDisplay.classList.add('reset-points');
+    if(await checkForHighScore(streakCount)) {
+      displayNewHSForm();
+    } else {
+      streakCount = 0;
+      streakDisplay.classList.add('reset-points');
+      promptPlayerForNextQuote();
+    }
   }
+}
+
+function promptPlayerForNextQuote() {
   streakDisplay.textContent = streakCount;
   nextQuote.classList.remove('hidden');
+}
+
+function displayNewHSForm() {
+  quote.textContent = `You did your Kanye Best with a score of ${streakCount}`;
+
+  fullAttribution.classList.add('hidden');
+  highScoreForm.classList.remove('hidden');
 }
 
 async function getNextQuote() {
   toggle = true;
   attribution.textContent = '????';
+  gameOver.classList.add('hidden');
   nextQuote.classList.add('hidden');
+  submitSuccess.classList.add('hidden');
+  toHighScores.classList.add('hidden');
+  fullAttribution.classList.remove('hidden');
 
   streakDisplay.classList.remove('reset-points');
   streakDisplay.classList.remove('add-point');
@@ -88,4 +117,38 @@ buttonEast.addEventListener('click', () => {
 
 nextQuote.addEventListener('click', () => {
   getNextQuote();
+});
+
+highScoreForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+
+  const highscoreObj = {
+    name: formData.get('name'),
+    score: streakCount
+  };
+  
+  fetch('/api/v1/highscores', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify(highscoreObj)
+  })
+    .then(res => {
+      highScoreForm.classList.add('hidden');
+      submitSuccess.classList.remove('hidden');
+      toHighScores.classList.remove('hidden');
+      if(res) fetch('/api/v1/highscores/lowest/delete', {
+        method: 'DELETE',
+        header: { 'Content-Type': 'application/json' }
+      });
+      streakCount = 0;
+      promptPlayerForNextQuote();
+    });
+});
+
+toHighScores.addEventListener('click', () => {
+  window.location.href = './leaderboard.html';
 });
