@@ -40,7 +40,8 @@ a {
 }
 
 .description {
-  width: 600px;
+  margin-top: 0px;
+  width: 635px;
   text-align: center;
 }
 
@@ -52,6 +53,10 @@ a {
 
 p {
   font-size: 20px;
+}
+
+#email {
+  margin-bottom: 0px;
 }
 
 
