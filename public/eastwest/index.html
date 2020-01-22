@@ -39,13 +39,27 @@
     <div id="quote-box">
 
       <div id="quote-border">
-        <p id='quote'></p>
-        <h5 id="full-attrib">- Kanye <span id='attribution'>????</span>
+        <h1 id="game-over" class="hidden">Game Over</h1>
+        <p id="quote"></p>
+        <h5 id="full-attrib">- Kanye 
+          <span id="attribution">????</span>
         </h5>
+
+        <form id="highscore-form" class="hidden">
+          </br>
+          Enter Name: 
+          <input id="player-name" name="name" type="text" placeholder="West" maxlength="8" required>
+          </br>
+          <button id="sumbit-score" type="submit" value="Sumbit">
+            Submit Score</button>
+        </form>
+
+        <h5 id="submit-success" class="hidden">Your score was submitted</h5>
       </div>
 
       <div id="score-box">
         <h3 id="score">Current Streak: <span id="streak">0</span></h3>
+        <button class="hidden" id="to-highscores">High Scores</button>
         <button class="hidden" id="next-quote">Next Quote</button>
       </div>
 
