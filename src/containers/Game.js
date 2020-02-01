@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Quote from '../components/Quote';
+import HUD from '../components/HUD';
 
 export default class Game extends Component {
   state = {
@@ -8,16 +9,18 @@ export default class Game extends Component {
       source: '?????'
     },
     hasGuessed: false,
+    score: 7
   }
 
   //handleGuess
   //handleLoadNext
 
   render() {
-    const { quote } = this.state;
+    const { quote, score } = this.state;
     return (
       <>
         <Quote quote={quote}/>
+        <HUD score={score}/>
       </>
     );
   }
