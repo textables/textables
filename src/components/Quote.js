@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Quote = ({ quote, hasGuessed }) => {
+const Quote = ({ quote }) => {
   return (
     <section>
       <p>{quote.text}</p>
-      <p>- {hasGuessed ? quote.source : '?????'}</p>
+      <p>- {quote.source}</p>
     </section>
   );
 };
@@ -14,8 +14,7 @@ Quote.propTypes = {
   quote: PropTypes.shape({
     text: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired
-  }).isRequired,
-  hasGuessed: PropTypes.bool.isRequired
+  }).isRequired
 };
 
 export default Quote;
