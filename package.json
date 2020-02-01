@@ -6,10 +6,10 @@
   "scripts": {
     "test": "jest --verbose --runInBand --detectOpenHandles",
     "test:watch": "npm run test -- --watch --detectOpenHandles",
-    "start": "node server.js",
+    "start:back": "node server.js",
     "start:watch": "nodemon server.js",
     "bot": "node bot.js",
-    "start-front-end": "webpack-dev-server --hot --mode development --devtool eval-source-map",
+    "start": "webpack-dev-server --hot --mode development --devtool eval-source-map",
     "build": "webpack -p --devtool source-map"
   },
   "jest": {
