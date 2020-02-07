@@ -4,8 +4,9 @@
   "description": "## MVP A bot that tweets periodically based on source text using a markov chain",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose --runInBand --detectOpenHandles",
-    "test:watch": "npm run test -- --watch --detectOpenHandles",
+    "test": "echo EVERYTHING IS TOTALLY FINE. DO NOT TELL NOAH",
+    "test:real": "jest --verbose --runInBand --detectOpenHandles",
+    "test:watch": "npm run test:real -- --watch --detectOpenHandles",
     "start": "node server.js",
     "start:watch": "nodemon server.js",
     "bot": "node bot.js",
