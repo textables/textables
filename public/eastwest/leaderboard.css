@@ -1,7 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
 #table {
   display: inline-grid;
-  width: 250px;
+  width: 300px;
   margin-top: 15px;
   text-align: left;
-    font-size: 20px;
+  font-size: 20px;
+  font-family: 'Roboto Condensed';
 }
+
+th {
+  text-decoration: underline;
+}
+
+tr {
+  border: solid 1px;
+}
+
+tr:nth-child(2) {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+tr:nth-child(3) {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+tr:nth-child(4) {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+img {
+  width: 50vw;
+}
+
+@media screen and (min-width: 600px) {
+  img {
+    width: 200px;
+  }
+} 
