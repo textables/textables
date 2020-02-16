@@ -1,3 +1,10 @@
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 img {
   width: 150px;
   height: 150px;
@@ -40,7 +47,8 @@ a {
 }
 
 .description {
-  width: 600px;
+  margin-top: 0px;
+  width: 635px;
   text-align: center;
 }
 
@@ -54,6 +62,9 @@ p {
   font-size: 20px;
 }
 
+#email {
+  margin-bottom: 0px;
+}
 
 @media (max-width: 700px) {
   .description {

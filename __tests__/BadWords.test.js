@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const { arrayIncludesABadWord } = require('../lib/createNewSentence');
 
 describe('arrayInclude function should', () => {
