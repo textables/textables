@@ -5,7 +5,7 @@ const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const HighScore = require('../lib/models/HighScore');
 
-describe('route tests', () => {
+describe('High Score route tests', () => {
 
 
   beforeAll(() => {
@@ -35,26 +35,18 @@ describe('route tests', () => {
     return mongoose.connection.close();
   });
 
-  it('can send a quote to the cron job controller and return complete', () => {
-    return request(app)
-      .post(`/api/v1/cron/${process.env.TWITTER || 'test'}`)
-      .then(res => {
-        expect(res.text).toEqual('complete');
-      });
-  });
-
   it('can add a new highscore', () => {
     return request(app)
       .post('/api/v1/highscores')
       .send({
         name: 'North',
-        score: 8
+        score: 5
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           name: 'North',
-          score: 8,
+          score: 5,
           timestamp: expect.any(String),
           __v: 0
         });
