@@ -4,10 +4,10 @@ const randomizer = require('./lib/utils/randomizer');
 const twitterPost = require('./lib/utils/twitter-post');
 
 
-const tweetQuote = async() => {
-  const randomSource = await randomizer();
-  const quoteObject = await Source.returnQuoteObject(randomSource);
-  return twitterPost(quoteObject);
+const tweetQuote = () => {
+  return randomizer()
+    .then(source => Source.returnQuoteObject(source))
+    .then(quoteObj => twitterPost(quoteObj));
 };
 
 module.exports = tweetQuote;
