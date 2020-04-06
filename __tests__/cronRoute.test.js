@@ -1,28 +1,21 @@
 require('dotenv').config();
+const request = require('supertest');
+const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
-
 const Source = require('../lib/models/Source');
 const Text = require('../lib/models/Text');
 
 const alice1 = require('../lib/data/alice-in-wonderland');
 const alice2 = require('../lib/data/through-the-looking-glass');
 const testText = `${alice1.text} ${alice2.text}`;
-const randomizer = require('../lib/utils/randomizer');
 
-describe('Source models returnQuoteObject() static', () => {
-  beforeAll(() => {
-    connect();
-  });
+describe('Cron Route Test', () => {
 
-  beforeEach(() => {
-    return mongoose.connection.dropDatabase();
-  });
-
-  let sources;
+  beforeAll(() => connect());
 
   beforeEach(async() => {
-    sources = await Source.create([{
+    const sources = await Source.create([{
       fullName: 'Lewis Carroll'
     }, {
       fullName: 'Jane Austen'
@@ -51,17 +44,11 @@ describe('Source models returnQuoteObject() static', () => {
     return mongoose.connection.close();
   });
 
-  it('can return a random sample', async() => {
-    const fullName = await randomizer();
-    return Source.returnQuoteObject(fullName)
+  it('can send a quote to the cron job controller and return complete', () => {
+    return request(app)
+      .post(`/api/v1/cron/${process.env.TWITTER || 'test'}`)
       .then(res => {
-        expect(res).toEqual({
-          quote: res.quote,
-          source: res.source,
-          sourceId: res.sourceId
-        });
-        expect(res.quote.length).toBeLessThan(280);
+        expect(res.text).toEqual('complete');
       });
   });
 });
-
