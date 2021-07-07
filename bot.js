@@ -4,10 +4,12 @@ const randomizer = require('./lib/utils/randomizer');
 const twitterPost = require('./lib/utils/twitter-post');
 
 
-const tweetQuote = async() => {
+const tweetQuote = async () => {
   const randomSource = await randomizer();
   const quoteObject = await Source.returnQuoteObject(randomSource);
-  twitterPost(quoteObject);
+
+  // return this here so you wait for this promise to finish
+  return twitterPost(quoteObject);
 };
 
 module.exports = tweetQuote;
